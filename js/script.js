@@ -7,6 +7,7 @@ button.addEventListener('click', function() {
 
 var paragraph = document.getElementById('joke');
 
+/*
 function getJoke() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url);
@@ -16,5 +17,16 @@ function getJoke() {
     });
     xhr.send();
 }
+*/
+function getJoke(){
+    fetch(url)
+        .then(function(response) {
+            response.json()
+                .then(function(data) {
+                    paragraph.innerHTML = data.value.joke;
+                })
+        })
+}
+
 
 $(document).ready(getJoke());
